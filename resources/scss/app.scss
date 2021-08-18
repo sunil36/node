@@ -1,0 +1,21 @@
+@import './variable';
+body{
+    font-family:'lato',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    color : $dark;
+}
+nav li:last-child a{
+    background-color: $primary;
+    &:hover{
+        background: $primary_hover;
+    }
+}
+nav li a{
+    transition:$transition;
+    &:hover{
+        color: $primary;
+    }
+}
+section .hero{
+background:red;
+}
