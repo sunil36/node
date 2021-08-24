@@ -16,6 +16,38 @@ nav li a{
         color: $primary;
     }
 }
-section .hero{
-background:red;
+.hero{
+background:#fff9f1;
+}
+.size{
+background:$secondary;
+}
+.add-to-cart{
+    border:2px solid $primary;
+    color:$primary;
+    transition:$transition;
+    &:hover{
+        background-color:$primary ;
+        color:$pure;
+        border-color:$pure;
+    }
+}
+.btn-primary{
+    background:$primary;
+    &:hover{
+        background:$primary_hover;
+    }
+}
+ .cart-section{
+    background:#fff9f1;
+    .amount{
+        color:$primary;
+    }
+
+}
+.login{
+    background:#fff9f1;
+}
+.register{
+    background:#fff9f1;
 }
