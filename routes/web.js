@@ -1,16 +1,15 @@
+ //require homecontroller here
+ const homecontroller=require("../app/http/controller/homecontroller");
+ const authcontroller=require("../app/http/controller/authcontroller");
+ const cartController=require("../app/http/controller/customer/cartController");
+
+
  function initRoutes(app){
-    app.get('/',(reqestObject,responseObject)=>{
-        responseObject.render("home");
-    });
-    app.get('/cart',(reqestObject,responseObject)=>{
-        responseObject.render("customers/cart");
-    });
-    app.get('/login',(reqestObject,responseObject)=>{
-         responseObject.render("auth/login");
-    });
-    app.get('/register',(reqestObject,responseObject)=>{
-        responseObject.render("auth/register");
-    });
+     app.get('/',homecontroller().index);
+     app.get('/login',authcontroller().login);
+     app.get('/register',authcontroller().register);
+    app.get('/cart',cartController().index);
+    // for getting form data using post method
  }
 
  module.exports=initRoutes;
