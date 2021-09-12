@@ -1,11 +1,11 @@
 function authController(){
     return{
-        login(reqestObject,responseObject){
-            responseObject.render("auth/login");
+        login(req,res){
+            res.render("auth/login");
         },
 
-        register(reqestObject,responseObject){
-             responseObject.render("auth/register");
+        register(req,res){
+             res.render("auth/register");
              }
 
     }

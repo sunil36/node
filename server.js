@@ -7,9 +7,10 @@ const expressLayout=require("express-ejs-layouts");
 const session =require("express-session");
 const flash =require("express-flash");
 const mongoose=require("mongoose");
-const MongoDBStore=require("connect-mongo")(session);
+const MongoDbStore = require('connect-mongo')
 const port =process.env.port|| 3000;
 app.use(express.static('public'));
+app.use(express.json());
 
 // Database connection
 const URL='mongodb://localhost/pizza'
@@ -21,21 +22,27 @@ connection.once('open', () => {
     console.log('Connection failed...')
 });
 //config session store
-let mongoStore = new MongoDbStore({
-    mongooseConnection: connection,
-    collection: 'sessions'
-})
+
 // config session here
 app.use(session({
   secret: process.env.COOKIE_SECRET,
   resave: false,
-  store: new MongoDBStore({
-    mongooseConnection: mongoose.connection
-}),
+  store: MongoDbStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    collection: 'sessions'
+      
+  }),
   saveUninitialized: false,
   cookie: { maxAge:1000*60*60*24  }
 }))
 app.use(flash());
+//global midleware
+app.use((req, res, next) => {
+    res.locals.session = req.session
+   
+    next()
+})
+
 // set layout 
 app.use(expressLayout);
 app.set('views',path.join(__dirname,"/resources/views"));
