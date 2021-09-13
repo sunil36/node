@@ -1,5 +1,6 @@
 <section class="cart-section py-16">
-     <div class="order container mx-auto w-1/2 ">
+    <% if(session.cart){%>
+  <div class="order container mx-auto w-1/2 ">
         <div class="flex items-center border-b border-gray-300 pb-4">
            <img src="/img/cart-black.png" alt="" >
            <h1 class="font-bold ml-2 text-2x">Order Summary</h1>
@@ -39,9 +40,9 @@
         </div>
      </div>
     </div>
-     
+     <% } else{ %> 
 
-    <!-- <div class="empty-cart py-16">
+    <div class="empty-cart py-16">
         <div class="container mx-auto text-center">
            <h1 class="text-3xl font-bold mb-2">Cart Empty 😄</h1>
             <p class="mb-2 text-gray-500 text-lg">You not order pizza yet.<br>To 
@@ -52,5 +53,6 @@
   
           </div>
   </div>
-  </div> -->
+  </div>
+  <% } %> 
 </section>

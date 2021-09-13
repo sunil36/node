@@ -8,6 +8,7 @@
      app.get('/',homecontroller().index);
      app.get('/login',authcontroller().login);
      app.get('/register',authcontroller().register);
+     app.post('/register',authcontroller().postRegister);
     app.get('/cart',cartController().index);
     app.post('/update-cart',cartController().update)
     // for getting form data using post method

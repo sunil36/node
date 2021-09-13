@@ -10,6 +10,7 @@ const mongoose=require("mongoose");
 const MongoDbStore = require('connect-mongo')
 const port =process.env.port|| 3000;
 app.use(express.static('public'));
+app.use(express.urlencoded({extended:false}))
 app.use(express.json());
 
 // Database connection
