@@ -21,7 +21,9 @@
     "express-session": "^1.17.2",
     "laravel-mix": "^6.0.27",
     "mongoose": "^5.13.8",
-    "noty": "^3.2.0-beta-deprecated"
+    "noty": "^3.2.0-beta-deprecated",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "resolve-url-loader": "^4.0.0",

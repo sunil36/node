@@ -7,11 +7,13 @@ const expressLayout=require("express-ejs-layouts");
 const session =require("express-session");
 const flash =require("express-flash");
 const mongoose=require("mongoose");
+const passport=require("passport");
 const MongoDbStore = require('connect-mongo')
 const port =process.env.port|| 3000;
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}))
 app.use(express.json());
+
 
 // Database connection
 const URL='mongodb://localhost/pizza'
@@ -40,10 +42,16 @@ app.use(flash());
 //global midleware
 app.use((req, res, next) => {
     res.locals.session = req.session
-   
+    // set login user inside session 
+    res.locals.user= req.user
     next()
 })
-
+console.log(res.locals.user);
+//passport
+const passportInit=require("./app/config/passport");
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 // set layout 
 app.use(expressLayout);
 app.set('views',path.join(__dirname,"/resources/views"));
