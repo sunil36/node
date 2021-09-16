@@ -20,9 +20,16 @@
         <ul class="flex items-center">
             <li class="ml-6"> <a href="/">Menu</a>  </li>
             <li class="ml-6"><a href="#">Orders</a></li>
-            <% if(user ){%>
-                <li class="ml-6"><a href="/logout">Logout</a></li>
+            <% if(user){%>
+
+                <li class="ml-6">
+                    <form id="logoutId" action="/logout" method="post">
+                        <a onclick="document.getElementById('logoutId').submit()" href="javascript:;">Logout</a>
+
+                    </form>
+                </li>
            <% } else{ %>
+            <%= user%>
                 <li class="ml-6"><a href="/register">Register</a></li>
                 <li class="ml-6"><a href="/login">Login</a></li>
             <% } %>

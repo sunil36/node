@@ -39,6 +39,11 @@ app.use(session({
   cookie: { maxAge:1000*60*60*24  }
 }))
 app.use(flash());
+//passport
+const passportInit=require("./app/config/passport");
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 //global midleware
 app.use((req, res, next) => {
     res.locals.session = req.session
@@ -46,12 +51,6 @@ app.use((req, res, next) => {
     res.locals.user= req.user
     next()
 })
-console.log(res.locals.user);
-//passport
-const passportInit=require("./app/config/passport");
-passportInit(passport);
-app.use(passport.initialize());
-app.use(passport.session());
 // set layout 
 app.use(expressLayout);
 app.set('views',path.join(__dirname,"/resources/views"));
