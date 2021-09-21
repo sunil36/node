@@ -17,8 +17,12 @@
      app.post('/logout',authcontroller().logout);
     app.get('/cart',cartController().index);
     app.post('/update-cart',cartController().update);
-    app.post('/orders', orderController().store)
+    
     // for getting form data using post method
+    // custmer routes  for orders
+    app.post('/orders', orderController().store);
+    app.post('/customers/orders',orderController().index)
+
  }
 
  module.exports=initRoutes;
