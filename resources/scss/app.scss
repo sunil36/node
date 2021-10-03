@@ -1,7 +1,12 @@
-@import './variables';
 @import '~noty/src/noty.scss';
 @import '~noty/src/themes/mint.scss';
-
+$primary: #FE5F1E;
+$primary-hover: #b23301;
+$secondary: #F8F8F8;
+$pure: #fff;
+$dark: #232323;
+$gray: #ccc;
+$smooth: all .3s ease-in-out;
 body {
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;

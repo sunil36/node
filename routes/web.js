@@ -3,9 +3,13 @@
  const authcontroller=require("../app/http/controller/authcontroller");
  const cartController=require("../app/http/controller/customer/cartController");
  const orderController=require("../app/http/controller/customer/orderController");
+ const AdminOrderController=require("../app/http/controller/admin/orderController");
+
 
 //  const guest =require("../app/http/middleware/guest");
- const guest = require('../app/http/middlewares/guest')
+ const guest = require('../app/http/middlewares/guest');
+ const auth = require('../app/http/middlewares/auth');
+
 
 
  function initRoutes(app){
@@ -20,8 +24,12 @@
     
     // for getting form data using post method
     // custmer routes  for orders
-    app.post('/orders', orderController().store);
-    app.post('/customers/orders',orderController().index)
+    app.post('/orders',auth, orderController().store);
+    app.get('/customers/orders',auth,orderController().index);
+
+    //admin order initRoutes
+
+    app.get('/admin/orders',auth,AdminOrderController().index);
 
  }
 
