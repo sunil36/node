@@ -1,8 +1,7 @@
 import axios from 'axios';
 import Noty from 'noty';
-// const initAdmin =require("./admin")
-// import initAdmin  from './admin.js';
-import initAdmin from './admin';
+import { initAdmin } from './admin'
+
 
 console.log(initAdmin)
 

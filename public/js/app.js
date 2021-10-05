@@ -1898,11 +1898,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
 
- // const initAdmin =require("./admin")
-// import initAdmin  from './admin.js';
 
 
-console.log(_admin__WEBPACK_IMPORTED_MODULE_2__.default);
+console.log(_admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin);
 var addToCart = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.querySelector("#cartCounter");
 
@@ -1931,7 +1929,7 @@ addToCart.forEach(function (btn) {
     updateCart(pizza);
   });
 });
-(0,_admin__WEBPACK_IMPORTED_MODULE_2__.default)();
+(0,_admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin)();
 
 /***/ }),
 
