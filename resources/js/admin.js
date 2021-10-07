@@ -80,4 +80,6 @@ function renderItems(items) {
     }
 }
 
-module.exports = initAdmin
+// module.exports = {initAdmin}
+export default initAdmin;
+

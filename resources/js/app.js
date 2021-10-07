@@ -1,9 +1,9 @@
 import axios from 'axios';
 import Noty from 'noty';
-import { initAdmin } from './admin'
+//  const initAdmin=require("./admin.js").default
+//  import * from 
+import initAdmin from "./admin";
 
-
-console.log(initAdmin)
 
 
 let addToCart=document.querySelectorAll('.add-to-cart');
@@ -36,4 +36,4 @@ addToCart.forEach((btn)=>{
 
 })
 
-initAdmin()
+initAdmin();
