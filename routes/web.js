@@ -9,6 +9,8 @@
 //  const guest =require("../app/http/middleware/guest");
  const guest = require('../app/http/middlewares/guest');
  const auth = require('../app/http/middlewares/auth');
+ const admin = require('../app/http/middlewares/admin');
+
 
 
 
@@ -29,7 +31,7 @@
 
     //admin order initRoutes
 
-    app.get('/admin/orders',auth,AdminOrderController().index);
+    app.get('/admin/orders',admin,AdminOrderController().index);
 
  }
 

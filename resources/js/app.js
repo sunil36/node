@@ -1,11 +1,7 @@
 import axios from 'axios';
 import Noty from 'noty';
-//  const initAdmin=require("./admin.js").default
-//  import * from 
+
 import initAdmin from "./admin";
-
-
-
 let addToCart=document.querySelectorAll('.add-to-cart');
 let cartCounter=document.querySelector("#cartCounter");
 function updateCart(pizza){
