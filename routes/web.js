@@ -4,7 +4,7 @@
  const cartController=require("../app/http/controller/customer/cartController");
  const orderController=require("../app/http/controller/customer/orderController");
  const AdminOrderController=require("../app/http/controller/admin/orderController");
-
+const statusController=require("../app/http/controller/admin/statusController");
 
 //  const guest =require("../app/http/middleware/guest");
  const guest = require('../app/http/middlewares/guest');
@@ -28,10 +28,14 @@
     // custmer routes  for orders
     app.post('/orders',auth, orderController().store);
     app.get('/customers/orders',auth,orderController().index);
+    app.get('/customer/orders/:id',auth,orderController().show);
+
 
     //admin order initRoutes
 
     app.get('/admin/orders',admin,AdminOrderController().index);
+    app.post('/admin/order/status',admin,statusController().update);
+
 
  }
 

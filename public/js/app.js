@@ -1932,6 +1932,14 @@ addToCart.forEach(function (btn) {
   });
 });
 (0,_admin__WEBPACK_IMPORTED_MODULE_2__.default)();
+var hiddenInput = document.querySelector("#hiddenInput");
+var order = hiddenInput ? hiddenInput.value : null;
+order = JSON.parse(order);
+console.log(order);
+
+function updateStatus(order) {}
+
+updateStatus(order);
 
 /***/ }),
 

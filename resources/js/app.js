@@ -33,3 +33,11 @@ addToCart.forEach((btn)=>{
 })
 
 initAdmin();
+
+let hiddenInput=document.querySelector("#hiddenInput")
+let order =hiddenInput?hiddenInput.value:null;
+order=JSON.parse(order)
+console.log(order)
+function updateStatus(order){
+}
+updateStatus(order)

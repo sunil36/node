@@ -29,7 +29,19 @@ function orderController(){
 
       async index(req,res){
             const orders =await Order.find({customerId:req.user._id},null,{sort:{'createAt':-1}});
+            res.header('Cache-Control', 'no-store')
             res.render('customers/orders',{orders:orders,moment:moment})
+        },
+
+        async show(req,res){
+           const order=await Order.findById(req.params.id);
+           //both id is object type show we cant compare them so convert first to string type.
+           if(req.user._id.toString()===order.customerId.toString()){
+               return  res.render('customers/singleOrder',{order:order});
+           }
+            return res.redirect('/');
+           
+
         }
     }
 }
