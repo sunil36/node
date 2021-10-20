@@ -1899,7 +1899,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+
 
 
 
@@ -1930,15 +1933,13 @@ addToCart.forEach(function (btn) {
     var pizza = JSON.parse(btn.dataset.pizza);
     updateCart(pizza);
   });
-});
-(0,_admin__WEBPACK_IMPORTED_MODULE_2__.default)(); //update order status
+}); //update order status
 
 var statuses = document.querySelectorAll('.status_line');
 var hiddenInput = document.querySelector("#hiddenInput");
 var order = hiddenInput ? hiddenInput.value : null;
-var time = document.createElement('small'); // covert json string into object
-
 order = JSON.parse(order);
+var time = document.createElement('small'); // covert json string into object
 
 function updateStatus(order) {
   statuses.forEach(function (status) {
@@ -1955,7 +1956,7 @@ function updateStatus(order) {
 
     if (dataProp === order.status) {
       stepCompleted = false;
-      time.innerText = moment(order.updatedAt).format('hh:mm A');
+      time.innerText = moment__WEBPACK_IMPORTED_MODULE_2___default()(order.updatedAt).format('hh:mm A');
       status.appendChild(time);
 
       if (status.nextElementSibling) {
@@ -1966,6 +1967,7 @@ function updateStatus(order) {
 }
 
 updateStatus(order);
+(0,_admin__WEBPACK_IMPORTED_MODULE_3__.default)();
 
 /***/ }),
 
