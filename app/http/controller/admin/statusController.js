@@ -7,7 +7,10 @@ function statusController(){
               if(err){
                   return res.redirect('/admin/orders');
               }
-
+                //get all dtat req from server socket emitter filed
+                 const eventEmitter=req.app.get('eventEmitter');
+                
+                 eventEmitter.emit("orderUpdate",{order:req.body.orderId,status:req.body.status})
                 return res.redirect('/admin/orders');
           })
       }

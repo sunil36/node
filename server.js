@@ -8,6 +8,7 @@ const session =require("express-session");
 const flash =require("express-flash");
 const mongoose=require("mongoose");
 const passport=require("passport");
+const Emitter=require("events")
 const MongoDbStore = require('connect-mongo')
 const port =process.env.port|| 3000;
 app.use(express.static('public'));
@@ -25,7 +26,10 @@ connection.once('open', () => {
     console.log('Connection failed...')
 });
 //config session store
-
+//event emitter
+ const eventEmitter=new Emitter()
+ //bind eventEmitter to use all over project
+ app.set("eventEmitter",eventEmitter)
 // config session here
 app.use(session({
   secret: process.env.COOKIE_SECRET,
@@ -61,6 +65,22 @@ require('./routes/web')(app);
 //end here
 
 //listen port here
-app.listen(port,()=>{
+const server=app.listen(port,()=>{
     console.log(`listing to port ${port}`);
+})
+
+
+//make the server connection with socket 
+const io  = require("socket.io")(server);
+io.on('connection', (socket) => {
+  //get join from server side which has  orderid and on the socket to join 
+  socket.on('join',(orderId)=>{
+   
+    socket.join(orderId)
+
+  })
+});
+//get orderupdate from statuscontroller emitter
+eventEmitter.on('orderUpdate',(data)=>{
+  io.to(`order_${data.id}`).emit('orderUpdate',data)
 })

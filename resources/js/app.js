@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Noty from 'noty';
 import moment from 'moment'
-
 import initAdmin from "./admin";
 let addToCart=document.querySelectorAll('.add-to-cart');
 let cartCounter=document.querySelector("#cartCounter");
@@ -66,3 +65,27 @@ function updateStatus(order){
 }
 updateStatus(order)
 initAdmin();
+
+
+//socket for realtime order update
+var socket = io();
+if(order){
+    socket.emit('join',`order_${order._id}`)
+
+}
+
+socket.on('orderUpdated', (data) => {
+    const updatedOrder = { ...order }
+    updatedOrder.updatedAt = moment().format()
+    updatedOrder.status = data.status
+    updateStatus(updatedOrder)
+
+    new Noty({
+        type: 'success',
+        timeout: 1000,
+        text: 'Order updated',
+        progressBar: false,
+    }).show();
+})
+
+
