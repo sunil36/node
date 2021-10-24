@@ -72,15 +72,18 @@ const server=app.listen(port,()=>{
 
 //make the server connection with socket 
 const io  = require("socket.io")(server);
+
+
 io.on('connection', (socket) => {
   //get join from server side which has  orderid and on the socket to join 
   socket.on('join',(orderId)=>{
    
     socket.join(orderId)
-
   })
+  console.log("connected")
+
 });
 //get orderupdate from statuscontroller emitter
-eventEmitter.on('orderUpdate',(data)=>{
-  io.to(`order_${data.id}`).emit('orderUpdate',data)
+eventEmitter.on('orderUpdated',(data)=>{
+  io.to(`order_${data.id}`).emit('orderUpdated',data)
 })

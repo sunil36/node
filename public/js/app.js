@@ -1979,9 +1979,14 @@ var socket = io();
 
 if (order) {
   socket.emit('join', "order_".concat(order._id));
-}
+} // let adminAreaPath = window.location.pathname
+// if(adminAreaPath.includes('admin')) {
+//     initAdmin(socket)
+//     socket.emit('join', 'adminRoom')
+// }
 
-socket.on('orderUpdated', function (data) {
+
+socket.on('orderUpdate', function (data) {
   var updatedOrder = _objectSpread({}, order);
 
   updatedOrder.updatedAt = moment__WEBPACK_IMPORTED_MODULE_2___default()().format();

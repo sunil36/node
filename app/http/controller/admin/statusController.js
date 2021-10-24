@@ -1,5 +1,4 @@
 const Order =require("../../../models/order")
-
 function statusController(){
     return{
       update(req,res){
@@ -10,7 +9,7 @@ function statusController(){
                 //get all dtat req from server socket emitter filed
                  const eventEmitter=req.app.get('eventEmitter');
                 
-                 eventEmitter.emit("orderUpdate",{order:req.body.orderId,status:req.body.status})
+                 eventEmitter.emit("orderUpdated",{order:req.body.orderId,status:req.body.status})
                 return res.redirect('/admin/orders');
           })
       }

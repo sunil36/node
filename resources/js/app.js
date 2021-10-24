@@ -64,17 +64,22 @@ function updateStatus(order){
     })
 }
 updateStatus(order)
-initAdmin();
 
-
+initAdmin()
 //socket for realtime order update
-var socket = io();
+let socket = io();
+
 if(order){
+  
     socket.emit('join',`order_${order._id}`)
 
 }
-
-socket.on('orderUpdated', (data) => {
+// let adminAreaPath = window.location.pathname
+// if(adminAreaPath.includes('admin')) {
+//     initAdmin(socket)
+//     socket.emit('join', 'adminRoom')
+// }
+socket.on('orderUpdate', (data) => {
     const updatedOrder = { ...order }
     updatedOrder.updatedAt = moment().format()
     updatedOrder.status = data.status
